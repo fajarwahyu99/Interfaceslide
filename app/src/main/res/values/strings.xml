@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">SETORIN</string>
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">LANJUT</string>
+    <string name="skip">LEWATI</string>
+    <string name="start">MULAI</string>
+
+    <string name="slide_1_title">KEYBOARD PAYMENT</string>
+    <string name="slide_1_desc">Lakukan transaksi tanpa harus meninggalkan chatmu</string>
+
+    <string name="slide_2_title">MUDAHNYA TRANSAKSI</string>
+    <string name="slide_2_desc">Transaksi semudah chat dengan teman</string>
+
+    <string name="slide_3_title">CEPAT</string>
+    <string name="slide_3_desc">Transaksi apapun dapat cepat di Lakukan</string>
+
+    <string name="slide_4_title">HAPPY</string>
+    <string name="slide_4_desc">Mudah dan cepatnya bertransaksi kini semenyenangkan chatting </string>
+
+    <string name="slide_5_title">COME ON!!</string>
+    <string name="slide_5_desc">Sekarang saatnya aktifkan bertransaksi semudah chatting </string>
+
+
+</resources>
