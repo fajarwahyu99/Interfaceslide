@@ -10,6 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/back"
+
     tools:context="com.example.helmyh.interfaceslide.Login">
 
     <Button
@@ -21,7 +22,6 @@
         android:layout_marginTop="50dp"
         android:text="Login"
         android:background="#FFFFFF"
-        android:onClick="borderButton"
         android:padding="10dp"
         android:shadowColor="#dcddf5"
         android:shadowDx="2"
@@ -29,6 +29,13 @@
         android:shadowRadius="5"
         />
 
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:layout_toEndOf="@+id/imageView6" />
 
     <TextView
         android:id="@+id/textView"

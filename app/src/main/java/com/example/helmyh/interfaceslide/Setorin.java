@@ -15,7 +15,7 @@ public class Setorin extends AppCompatActivity {
 
         initComponents();
 
-   
+
         Bundle extras = getIntent().getExtras();
         if (extras != null)
             resultNama = extras.getString("result_nama");

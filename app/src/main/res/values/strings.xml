@@ -20,5 +20,7 @@
     <string name="slide_5_title">COME ON!!</string>
     <string name="slide_5_desc">Sekarang saatnya aktifkan bertransaksi semudah chatting </string>
 
-
+    <string name="facebook_app_id">603965929991414</string>
+    <string name="cancel_login">Cancel</string>
+    <string name="error_login">Error</string>
 </resources>

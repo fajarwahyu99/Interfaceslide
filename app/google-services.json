@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "9727361911",
+    "project_id": "firebase-setorin"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9727361911:android:d84224077f9fa176",
+        "android_client_info": {
+          "package_name": "com.example.helmyh.interfaceslide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9727361911-09t4j9pfrpdeik65lnmoscgvc6f0nece.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "9727361911-05ame1o70k8uco3oud4lofa7s848lfme.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.helmyh.interfaceslide",
+            "certificate_hash": "7a83a7dc0b43a4ccc77c76c1f18a2673627b91ed"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAeJacn1usHRMITe-HNQeX3eaqml1BL3g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
