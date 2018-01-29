@@ -30,16 +30,6 @@
         />
 
 
-    <Button
-        android:id="@+id/btn_sign_in_google"
-        android:layout_width="127dp"
-        android:layout_height="29dp"
-        android:layout_alignBottom="@+id/loginButton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/loginButton"
-        android:background="#FF0000"
-        android:text="Google Login"
-        android:textColor="@android:color/white" />
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/loginButton"
@@ -139,6 +129,13 @@
         android:layout_marginTop="10dp"
         app:srcCompat="@drawable/password" />
 
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="150dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/textView4"
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/loginButton" />
 
 </RelativeLayout>
 

@@ -1,5 +1,6 @@
 package com.example.helmyh.interfaceslide;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -69,7 +70,8 @@ public class Setorin extends AppCompatActivity
         imgview_barcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showToast("barcode");
+                startActivity(new Intent(Setorin.this, Scanner.class));
+                finish();
             }
         });
 

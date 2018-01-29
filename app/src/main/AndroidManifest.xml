@@ -3,6 +3,7 @@
     package="com.example.helmyh.interfaceslide">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +28,8 @@
         <activity
             android:name=".Setorin"
             android:label="@string/title_activity_setorin"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Scanner"></activity>
     </application>
 
 </manifest>
