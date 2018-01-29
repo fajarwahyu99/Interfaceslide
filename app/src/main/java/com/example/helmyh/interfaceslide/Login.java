@@ -55,8 +55,8 @@ public class Login extends AppCompatActivity {
 
         callbackManager = CallbackManager.Factory.create();
         this.setTitle("Login Sample");
-        LoginButton loginButton = (LoginButton)findViewById(R.id.loginButton);
-        loginButton.setReadPermissions(Arrays.asList("email","public_profile"));
+        LoginButton loginButton = (LoginButton) findViewById(R.id.loginButton);
+        loginButton.setReadPermissions(Arrays.asList("email", "public_profile"));
         AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
             @Override
             protected void onCurrentAccessTokenChanged(AccessToken oldAccessToken, AccessToken currentAccessToken) {
@@ -78,14 +78,16 @@ public class Login extends AppCompatActivity {
                         new GraphRequest.GraphJSONObjectCallback() {
                             @Override
                             public void onCompleted(JSONObject object, GraphResponse response) {
-                                Log.e("aa", ""+response.toString());
+                                Log.e("aa", "" + response.toString());
                                 try {
                                     Toast.makeText(getApplicationContext(), "Hi, " + object.getString("name"), Toast.LENGTH_LONG).show();
-                                } catch(JSONException ex) {
+                                } catch (JSONException ex) {
                                     ex.printStackTrace();
                                 }
                             }
                         });
+                Intent intentfb = new Intent(mContext, Setorin.class);
+                startActivity(intentfb);
                 Bundle parameters = new Bundle();
                 parameters.putString("fields", "id,name");
                 request.setParameters(parameters);
@@ -102,20 +104,16 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(getApplication(), R.string.error_login, Toast.LENGTH_SHORT).show();
             }
         });
-    }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+
 
 
 
         mContext = this;
-        mApiService = UtilsApi.getAPIService(); // meng-init yang ada di package apihelper
+        mApiService = UtilsApi.getAPIService();
         initComponents();
-        
+
     findViewById(R.id.tvsignup).setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -175,6 +173,7 @@ public class Login extends AppCompatActivity {
                             loading.dismiss();
                         }
                     }
+
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {

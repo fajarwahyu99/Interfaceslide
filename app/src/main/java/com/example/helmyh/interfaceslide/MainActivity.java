@@ -1,9 +1,11 @@
 package com.example.helmyh.interfaceslide;
+import android.content.Context;
 import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -34,8 +36,9 @@ findViewById(R.id.choose).setOnClickListener(new View.OnClickListener() {
                                                    public void onClick(View v) {
                                                        PrefManager prefManager = new PrefManager(getApplicationContext());
                                                        prefManager.setFirstTimeLaunch(true);
-                                                       startActivityForResult(new Intent(Settings.ACTION_INPUT_METHOD_SUBTYPE_SETTINGS), 0);
-                                                       finish();
+                                                       InputMethodManager imm = (InputMethodManager)
+                                                               getSystemService(Context.INPUT_METHOD_SERVICE);
+                                                       imm.showInputMethodPicker();
                                                    }
                                                });
 
