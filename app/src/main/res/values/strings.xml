@@ -23,4 +23,10 @@
     <string name="facebook_app_id">529459690755619</string>
     <string name="cancel_login">Cancel</string>
     <string name="error_login">Error</string>
+    <string name="title_activity_setorin">Setorin</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
