@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/back"
+    android:background="@drawable/bg_all_gradient"
 
     tools:context="com.example.helmyh.interfaceslide.Login">
 
@@ -21,7 +21,7 @@
         android:layout_below="@+id/textView4"
         android:layout_marginTop="50dp"
         android:text="Login"
-        android:background="#FFFFFF"
+        android:background="@drawable/bg_button"
         android:padding="10dp"
         android:shadowColor="#dcddf5"
         android:shadowDx="2"
@@ -30,12 +30,11 @@
         />
 
 
-
     <com.facebook.login.widget.LoginButton
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_alignBottom="@+id/sign_in_button"
         android:layout_gravity="center"
         android:layout_toEndOf="@+id/imageView6" />
 
@@ -57,8 +56,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/textView"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="7dp"
         android:layout_toEndOf="@+id/imageView5"
+        android:background="@drawable/bg_form"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress" />
@@ -68,8 +69,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/btn_login"
-        android:layout_below="@+id/et_email"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_below="@+id/imageView5"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/bg_form"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
@@ -103,11 +107,9 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_alignStart="@+id/et_pass"
-
-        android:layout_below="@+id/et_pass"
-        android:layout_marginTop="12dp"
+        android:layout_alignStart="@+id/btn_login"
+        android:layout_below="@+id/imageView6"
+        android:layout_marginTop="22dp"
         android:text="Login Cepat Dengan"
         android:textSize="10sp" />
 
@@ -117,7 +119,6 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/et_email"
-        android:layout_marginTop="10dp"
         app:srcCompat="@drawable/surat" />
 
     <ImageView
@@ -126,7 +127,6 @@
         android:layout_height="25dp"
         android:layout_alignParentStart="true"
         android:layout_alignTop="@+id/et_pass"
-        android:layout_marginTop="10dp"
         app:srcCompat="@drawable/password" />
 
     <com.google.android.gms.common.SignInButton

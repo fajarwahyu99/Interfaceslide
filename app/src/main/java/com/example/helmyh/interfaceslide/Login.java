@@ -3,12 +3,14 @@ package com.example.helmyh.interfaceslide;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,15 +45,25 @@ public class Login extends AppCompatActivity {
     Button btnLogin;
     Button btnRegister;
     ProgressDialog loading;
-
+    RelativeLayout actimain;
     Context mContext;
     BaseApiService mApiService;
     CallbackManager callbackManager;
+    AnimationDrawable animationDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+
+
+        actimain = (RelativeLayout) findViewById(R.id.activity_main);
+
+        animationDrawable = (AnimationDrawable) actimain.getBackground();
+        animationDrawable.setEnterFadeDuration(2000);
+        animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.start();
+
 
         callbackManager = CallbackManager.Factory.create();
         this.setTitle("Login Sample");
