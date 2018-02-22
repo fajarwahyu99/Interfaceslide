@@ -24,7 +24,7 @@ public class Setorin extends AppCompatActivity
     String resultNama;
     private ImageView imgview_barcode;
     private CircleImageView imgview_fotoprofil;
-
+private ImageView setorin_icon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +87,14 @@ public class Setorin extends AppCompatActivity
     private void initComponents() {
         tvResultNama = (TextView) findViewById(R.id.tvResultNama);
 
+        setorin_icon = (ImageView) findViewById(R.id.iv_setorin);
+        setorin_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Setorin.this, RiderWelcomeActivity.class));
+                finish();
+            }
+        });
     }
     @Override
     public void onBackPressed() {
@@ -132,6 +140,8 @@ public class Setorin extends AppCompatActivity
             showToast("Payment");
         } else if (id == R.id.nav_setorin) {
             showToast("Setorin");
+            startActivity(new Intent(Setorin.this, RiderWelcomeActivity.class));
+            finish();
         } else if (id == R.id.nav_help) {
             showToast("Help");
         } else if (id == R.id.nav_share) {

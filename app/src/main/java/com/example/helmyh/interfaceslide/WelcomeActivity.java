@@ -31,14 +31,14 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // mengecek lauch activity - sebelum memanggil setContentView()
+
         prefManager = new PrefManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
             finish();
         }
 
-        // membuat transparan notifikasi
+
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
@@ -52,18 +52,15 @@ public class WelcomeActivity extends AppCompatActivity {
 btnEnable = (Button) findViewById(R.id.enable);
 btnChoose = (Button) findViewById(R.id.choose);
 
-        // layout xml slide 1 sampai 4
-        // add few more layouts if you want
+
         layouts = new int[]{
                 R.layout.slide1,
                 R.layout.slide2,
                 R.layout.slide3,
                 R.layout.slide4};
 
-        // tombol dots (lingkaran kecil perpindahan slide)
         addBottomDots(0);
 
-        // membuat transparan notifikasi
         changeStatusBarColor();
 
         myViewPagerAdapter = new MyViewPagerAdapter();
@@ -80,11 +77,10 @@ btnChoose = (Button) findViewById(R.id.choose);
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // mengecek page terakhir (slide 4)
-                // jika activity home sudah tampil
+
                 int current = getItem(+1);
                 if (current < layouts.length) {
-                    // move to next screen
+
                     viewPager.setCurrentItem(current);
                 } else {
                     launchHomeScreen();
@@ -125,20 +121,17 @@ btnChoose = (Button) findViewById(R.id.choose);
         finish();
     }
 
-    //  viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
         @Override
         public void onPageSelected(int position) {
             addBottomDots(position);
 
-            // mengubah button lanjut 'NEXT' / 'GOT IT'
             if (position == layouts.length - 1) {
-                // last page. make button text to GOT IT
                 btnNext.setText(getString(R.string.start));
                 btnSkip.setVisibility(View.GONE);
             } else {
-                // still pages are left
+
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
             }
@@ -155,9 +148,7 @@ btnChoose = (Button) findViewById(R.id.choose);
         }
     };
 
-    /**
-     * Making notification bar transparent
-     */
+
     private void changeStatusBarColor() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = getWindow();
@@ -166,9 +157,7 @@ btnChoose = (Button) findViewById(R.id.choose);
         }
     }
 
-    /**
-     * View pager adapter
-     */
+
     public class MyViewPagerAdapter extends PagerAdapter {
         private LayoutInflater layoutInflater;
 

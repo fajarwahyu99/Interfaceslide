@@ -18,25 +18,25 @@
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/textView4"
-        android:layout_marginTop="50dp"
-        android:text="Login"
+        android:layout_below="@+id/loginButton"
+        android:layout_marginTop="57dp"
         android:background="@drawable/bg_button"
         android:padding="10dp"
         android:shadowColor="#dcddf5"
         android:shadowDx="2"
         android:shadowDy="2"
         android:shadowRadius="5"
-        />
+        android:text="Login" />
 
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/sign_in_button"
+        android:layout_below="@+id/textView4"
         android:layout_gravity="center"
-        android:layout_toEndOf="@+id/imageView6" />
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView"
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/btn_login"
         android:layout_below="@+id/btn_login"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="33dp"
         android:clickable="true"
         android:text="Belum memiliki akun? Daftar Sekarang"
         android:textSize="14sp"
@@ -97,7 +97,7 @@
 
         android:layout_alignStart="@+id/tvsignup"
         android:layout_below="@+id/tvsignup"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:text="Lupa Password?"
         android:textColor="#c95252"
         android:textStyle="bold" />
@@ -133,9 +133,9 @@
         android:id="@+id/sign_in_button"
         android:layout_width="150dp"
         android:layout_height="35dp"
-        android:layout_below="@+id/textView4"
-        android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/loginButton" />
+        android:layout_below="@+id/loginButton"
+        android:layout_marginTop="13dp"
+        android:layout_toEndOf="@+id/textView3" />
 
 </RelativeLayout>
 
