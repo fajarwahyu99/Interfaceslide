@@ -14,17 +14,17 @@ public interface BaseApiService {
 
     @FormUrlEncoded
     @POST("login.php")
-    Call<ResponseBody> loginRequest(@Field("email") String email,
-                                    @Field("password") String password);
+    Call<ResponseBody> loginRequest(@Field("uemail") String email,
+                                    @Field("pwd") String password);
 
 
     @FormUrlEncoded
-    @POST("register.php")
-    Call<ResponseBody> registerRequest(@Field("nama") String nama,
-                                       @Field("email") String email,
-                                       @Field("password") String password,
-                                       @Field("phone") String phone);
+    @POST("signupAct.php")
+    Call<ResponseBody> registerRequest(@Field("fullname") String nama,
+                                       @Field("uemail") String email,
+                                       @Field("pwd") String password);
 
 
 
 }
+

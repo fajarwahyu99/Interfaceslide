@@ -163,18 +163,18 @@ public class Login extends AppCompatActivity {
                             loading.dismiss();
                             try {
                                 JSONObject jsonRESULTS = new JSONObject(response.body().string());
-                                if (jsonRESULTS.getString("error").equals("false")){
+                                if (jsonRESULTS.getInt("logged")==1){
                                     // Jika login berhasil maka data nama yang ada di response API
                                     // akan diparsing ke activity selanjutnya.
                                     Toast.makeText(mContext, "BERHASIL LOGIN", Toast.LENGTH_SHORT).show();
-                                    String nama = jsonRESULTS.getJSONObject("user").getString("nama");
+                                    //String nama = jsonRESULTS.getJSONObject("user").getString("nama");
                                     Intent intent = new Intent(mContext, Setorin.class);
-                                    intent.putExtra("result_nama", nama);
+                                    //intent.putExtra("result_nama", nama);
                                     startActivity(intent);
                                 } else {
                                     // Jika login gagal
-                                    String error_message = jsonRESULTS.getString("error_msg");
-                                    Toast.makeText(mContext, error_message, Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(mContext, "BERHASIL LOGIN", Toast.LENGTH_SHORT).show();
+
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

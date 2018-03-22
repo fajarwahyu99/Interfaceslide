@@ -28,7 +28,6 @@ TextView textView;
     EditText etNama;
     EditText etEmail;
     EditText etPassword;
-    EditText etPhone;
     Button btnRegister;
     ProgressDialog loading;
 
@@ -60,7 +59,6 @@ TextView textView;
         etNama = (EditText) findViewById(R.id.et_nama);
         etEmail = (EditText) findViewById(R.id.et_email);
         etPassword = (EditText) findViewById(R.id.et_pass);
-        etPhone = (EditText) findViewById(R.id.et_phone);
         btnRegister = (Button) findViewById(R.id.btn_signup);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +73,7 @@ TextView textView;
     private void requestRegister(){
         mApiService.registerRequest(etNama.getText().toString(),
                 etEmail.getText().toString(),
-                etPassword.getText().toString(), etPhone.getText().toString())
+                etPassword.getText().toString())
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

@@ -6,7 +6,7 @@ package com.example.helmyh.interfaceslide;
 public class UtilsApi {
 
 
-    public static final String BASE_URL_API = "http://10.0.2.2/api/";
+    public static final String BASE_URL_API = "http://infolabsolution.com/sandbox/undangin/websvc/user/";
 
 
     public static BaseApiService getAPIService(){
