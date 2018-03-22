@@ -27,7 +27,9 @@ public class Scanner extends AppCompatActivity implements ZXingScannerView.Resul
         mScannerView.setResultHandler(this);
         mScannerView.startCamera();          // Start camera on resume aaaaaaaaaaa
     }
-
+public void tamvan(){
+        
+}
     @Override
     public void onPause() {
         super.onPause();
