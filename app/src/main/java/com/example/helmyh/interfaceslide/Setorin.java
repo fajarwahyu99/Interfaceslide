@@ -144,6 +144,8 @@ private ImageView setorin_icon;
             finish();
         } else if (id == R.id.nav_help) {
             showToast("Help");
+        } else if (id == R.id.nav_history) {
+            showToast("History");
         } else if (id == R.id.nav_share) {
             showToast("Share Setorin ke teman");
         } else if (id == R.id.nav_send) {

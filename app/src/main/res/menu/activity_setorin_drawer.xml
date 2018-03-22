@@ -18,6 +18,10 @@
                 android:icon="@drawable/driver"
                 android:title="Setorin" />
             <item
+                android:id="@+id/nav_history"
+                android:icon="@drawable/history"
+                android:title="Riwayat" />
+            <item
                 android:id="@+id/nav_help"
                 android:icon="@drawable/help"
                 android:title="Help" />

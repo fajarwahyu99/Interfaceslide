@@ -1,7 +1,9 @@
 package com.example.helmyh.interfaceslide;
 
 import android.*;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -37,6 +39,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -77,6 +81,7 @@ public class RiderWelcomeActivity extends AppCompatActivity
     GeoFire geoFire;
 
     Marker mUserMarker;
+    Marker mUserCircle;
 
     ImageView imgExpandable;
 //    BottomSheetRiderFragment mBottomSheet;
@@ -109,91 +114,12 @@ public class RiderWelcomeActivity extends AppCompatActivity
         mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.mapRider);
         mapFragment.getMapAsync(this);
 
-//        riders = FirebaseDatabase.getInstance().getReference(Common.driver_tbl);
-//        geoFire = new GeoFire(riders);
 
-//        imgExpandable = (ImageView)findViewById(R.id.imgExpandalbe);
-//        mBottomSheet = BottomSheetRiderFragment.newInstance("Rider bottom sheet");
-//        imgExpandable.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mBottomSheet.show(getSupportFragmentManager(),mBottomSheet.getTag());
-//            }
-//        });
-//
-//        btnPickUpRequest = (Button)findViewById(R.id.btnPickupRequest);
-//        btnPickUpRequest.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                requestPickUpHere(FirebaseAuth.getInstance().getCurrentUser().getUid());
-//            }
-//        });
 
         setUpLocation();
     }
 
-//    private void requestPickUpHere(String uid) {
-//        DatabaseReference dbRequest = FirebaseDatabase.getInstance().getReference(Common.pickup_request_tbl);
-//        GeoFire mGeoFire = new GeoFire(dbRequest);
-//        mGeoFire.setLocation(uid, new GeoLocation(mLastLocation.getLatitude(),mLastLocation.getLongitude()));
-//
-//        if(mUserMarker.isVisible())
-//            mUserMarker.remove();
-//        mUserMarker =  mMap.addMarker(new MarkerOptions()
-//                .title("Pickup Here")
-//                .snippet("")
-//                .position(new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude()))
-//                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-//        mUserMarker.showInfoWindow();
-//        btnPickUpRequest.setText("Getting your DRIVER");
-//
-//        findDriver();
-//
-//    }
 
-//    private void findDriver() {
-//        final DatabaseReference drivers = FirebaseDatabase.getInstance().getReference(Common.driver_tbl);
-//        GeoFire gfDrivers = new GeoFire(drivers);
-//
-//        GeoQuery geoQuery = gfDrivers.queryAtLocation(new GeoLocation(mLastLocation.getLatitude(),mLastLocation.getLongitude()),
-//                radius);
-//        geoQuery.removeAllListeners();
-//        geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
-//            @Override
-//            public void onKeyEntered(String key, GeoLocation location) {
-//                if(!isDriverFound){
-//                    isDriverFound = true;
-//                    driverId = key;
-//                    btnPickUpRequest.setText("CALL DRIVER");
-//                    Toast.makeText(RiderWelcomeActivity.this,""+key,Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onKeyExited(String key) {
-//
-//            }
-//
-//            @Override
-//            public void onKeyMoved(String key, GeoLocation location) {
-//
-//            }
-//
-//            @Override
-//            public void onGeoQueryReady() {
-//                if(!isDriverFound){
-//                    radius++;
-//                    findDriver();
-//                }
-//            }
-//
-//            @Override
-//            public void onGeoQueryError(DatabaseError error) {
-//
-//            }
-//        });
-//
-//    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -239,12 +165,27 @@ public class RiderWelcomeActivity extends AppCompatActivity
             if(mUserMarker != null){
                 mUserMarker.remove();
             }
-            mUserMarker = mMap.addMarker(new MarkerOptions()
+//            mUserMarker = mMap.addCircle(new CircleOptions()
+//                    .center(new LatLng(latitude,longitude))
+//                    .radius(1000)
+//                    .strokeWidth(10)
+//                    .strokeColor(Color.GREEN)
+//                    .fillColor(Color.argb(128, 0, 0, 0))
+//                    .clickable(true);
+            CircleOptions mUserMarker = new CircleOptions();
+            mUserMarker.center(new LatLng(latitude,longitude));
+            mUserMarker.radius(500);
+            mUserMarker.fillColor(Color.argb(50, 0, 255, 0));
+            mUserMarker.strokeColor(Color.GREEN);
+            mUserMarker.strokeWidth(1);
+
+            mMap.addCircle(mUserMarker);
+            mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(latitude,longitude))
-                    .title("Your Location"));
+                    .icon( BitmapDescriptorFactory.fromResource(R.drawable.man))
+                    .title("Anda Disini"));
             mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude,longitude), 15.0f));
 
-//            loadAllAvailableDriver();
 
         }
         else{
@@ -253,60 +194,6 @@ public class RiderWelcomeActivity extends AppCompatActivity
 
     }
 
-//    private void loadAllAvailableDriver() {
-////        DatabaseReference driverLocation = FirebaseDatabase.getInstance().getReference(Common.driver_tbl);
-////        GeoFire gf = new GeoFire(driverLocation);
-////        GeoQuery geoQuery = gf.queryAtLocation(new GeoLocation(mLastLocation.getLatitude(),mLastLocation.getLongitude()),distance);
-////        geoQuery.removeAllListeners();
-//
-////        geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
-////            @Override
-////            public void onKeyEntered(String key, final GeoLocation location) {
-//////                FirebaseDatabase.getInstance().getReference(Common.user_driver_tbl)
-//////                        .child(key)
-////                        .addListenerForSingleValueEvent(new ValueEventListener() {
-////                            @Override
-////                            public void onDataChange(DataSnapshot dataSnapshot) {
-////                                Rider rider = dataSnapshot.getValue(Rider.class);
-////                                mMap.addMarker(new MarkerOptions()
-////                                        .position(new LatLng(location.latitude,location.longitude))
-////                                        .flat(true)
-////                                        .title(rider.getName())
-////                                        .snippet("Phone : "+rider.getPhone())
-////                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.motor)));
-////                            }
-////
-////                            @Override
-////                            public void onCancelled(DatabaseError databaseError) {
-////
-////                            }
-////                        });
-////            }
-//
-//            @Override
-//            public void onKeyExited(String key) {
-//
-//            }
-//
-//            @Override
-//            public void onKeyMoved(String key, GeoLocation location) {
-//
-//            }
-//
-//            @Override
-//            public void onGeoQueryReady() {
-//                if(distance <= LIMIT){
-//                    distance++;
-//                    loadAllAvailableDriver();
-//                }
-//            }
-//
-//            @Override
-//            public void onGeoQueryError(DatabaseError error) {
-//
-//            }
-//        });
-//    }
 
     private void createLocationRequest() {
         mLocationRequest = new LocationRequest();
@@ -339,28 +226,10 @@ public class RiderWelcomeActivity extends AppCompatActivity
         return true;
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        if (drawer.isDrawerOpen(GravityCompat.START)) {
-//            drawer.closeDrawer(GravityCompat.START);
-//        } else {
-//            super.onBackPressed();
-//        }
-//    }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.home, menu);
-//        return true;
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -377,10 +246,20 @@ public class RiderWelcomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_share) {
-
+        if (id == R.id.nav_saldo) {
+            showToast("Saldo");
+        } else if (id == R.id.nav_payment) {
+            showToast("Payment");
+        } else if (id == R.id.nav_setorin) {
+            showToast("Apa Saja di Setorin");
+        } else if (id == R.id.nav_help) {
+            showToast("Help");
+        } else if (id == R.id.nav_history) {
+            showToast("History");
+        } else if (id == R.id.nav_share) {
+            showToast("Share Setorin ke teman");
         } else if (id == R.id.nav_send) {
-
+            showToast("Kirim ke teman");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -426,5 +305,9 @@ public class RiderWelcomeActivity extends AppCompatActivity
     public void onLocationChanged(Location location) {
         mLastLocation = location;
         displayLocation();
+    }
+
+    private void showToast(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
